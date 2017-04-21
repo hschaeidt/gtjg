@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "webpack --config ./config/webpack.dev.config.js"
+    "build": "webpack -p --config ./config/webpack.prod.config.js"
   },
   "devDependencies": {
     "awesome-typescript-loader": "^3.1.2",
