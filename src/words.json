@@ -1,0 +1,31 @@
+[{
+  "character": "元気",
+  "kana": [ "げんき" ],
+  "meaning": [
+    "lively",
+    "healthy"
+  ],
+  "partOfSpeech": [
+    "noun"
+  ]
+}, {
+  "character": "友人",
+  "kana": [ "ゆうじん" ],
+  "meaning": [
+    "friend"
+  ],
+  "partOfSpeech": [
+    "noun"
+  ]
+}, {
+  "character": "学生",
+  "kana": [
+    "がくせい"
+  ],
+  "meaning": [
+    "student"
+  ],
+  "partOfSpeech": [
+    "noun"
+  ]
+}]
