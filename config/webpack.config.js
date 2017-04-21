@@ -1,10 +1,13 @@
+const path = require("path");
+
 module.exports = {
   entry: "./src/app.tsx",
   output: {
-    filename: "./public/app.js"
+    path: path.join(__dirname, '..', 'public'),
+    filename: 'app.js',
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx" ]
+    extensions: [ ".ts", ".tsx", ".js", ".jsx" ]
   },
   module: {
     rules: [ { loader: "awesome-typescript-loader", test: /\.tsx?$/ } ]
