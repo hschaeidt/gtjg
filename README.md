@@ -1,5 +1,7 @@
 # GTJG
 
+[![Build Status](https://travis-ci.org/hschaeidt/gtjg.svg?branch=master)](https://travis-ci.org/hschaeidt/gtjg)
+
 ## Getting started
 
 
