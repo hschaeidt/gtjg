@@ -10,6 +10,9 @@ module.exports = {
     extensions: [ ".ts", ".tsx", ".js", ".jsx" ]
   },
   module: {
-    rules: [ { loader: "awesome-typescript-loader", test: /\.tsx?$/ } ]
+    rules: [
+      { loader: "awesome-typescript-loader", test: /\.tsx?$/ },
+      { loader: 'json-loader', test: /\.json$/ }
+    ]
   }
 };

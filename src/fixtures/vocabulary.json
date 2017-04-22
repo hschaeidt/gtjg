@@ -28,4 +28,15 @@
   "partOfSpeech": [
     "noun"
   ]
+}, {
+  "character": "学生",
+  "kana": [
+    "がくせい"
+  ],
+  "meaning": [
+    "student"
+  ],
+  "partOfSpeech": [
+    "adverb"
+  ]
 }]
