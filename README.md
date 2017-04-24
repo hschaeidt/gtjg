@@ -43,6 +43,11 @@ A watcher during developement can be started by running `yarn test -- --watch`.
 
 Test execution and coverage reports will be generated in the `coverage/` folder.
 
+#### `yarn ci-coverage`
+
+`travis-ci` specific command.
+Test execution and coverage reports that will be uploaded to coveralls.io.
+
 #### `yarn serve`
 
 Launches a minimal express webserver on [localhost:3000](http://localhost:3000). Used to test service workers.
