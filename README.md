@@ -29,6 +29,10 @@ Open [http://localhost:8080](http://localhost:8080) to view in the browser.
 Creates a production build - a `app.js` file will be created in the `public/` folder. Production builds come without source maps and are minified.
 For more information see `config/webpack.prod.config.js`.
 
+#### `yarn lint`
+
+Static code analysis for typescript files. See `/tslint.json` for rule definitions
+
 #### `yarn test`
 
 Runs all tests using [jest-cli](https://facebook.github.io/jest/). All tests located in `__tests__` folders will be executed. Also see `package.json` for configuration changes.<br />
