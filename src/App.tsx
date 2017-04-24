@@ -1,7 +1,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import ReviewInput from "./components/ReviewInput";
 
 ReactDOM.render(
-  <pre>Hallo Welt</pre>,
+  <ReviewInput />,
   document.getElementById("app"),
 );
