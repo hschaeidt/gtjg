@@ -41,3 +41,7 @@ A watcher during developement can be started by running `yarn test -- --watch`.
 #### `yarn coverage`
 
 Test execution and coverage reports will be generated in the `coverage/` folder.
+
+#### `yarn serve`
+
+Launches a minimal express webserver on (localhost:3000)[http://localhost:3000]. Used to test service workers.

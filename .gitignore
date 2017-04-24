@@ -2,4 +2,4 @@ dist/
 node_modules/
 coverage/
 
-public/app.js*
+public/*.js

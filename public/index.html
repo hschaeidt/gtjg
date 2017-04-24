@@ -9,5 +9,12 @@
     <div id="app"></div>
 
     <script src="app.js"></script>
+    <script type="application/javascript">
+      (function() {
+        if('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/gtjg-sw.js');
+        }
+      })();
+    </script>
   </body>
 </html>
