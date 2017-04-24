@@ -4,12 +4,13 @@
     "build": "webpack -p --config ./config/webpack.prod.config.js",
     "lint": "tslint src/**/*.tsx src/**/*.ts",
     "test": "jest",
-    "coverage": "jest --coverage",
+    "coverage": "jest --coverage && cat ./coverage/remapped/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "serve": "node server.js"
   },
   "devDependencies": {
     "@types/jest": "^19.2.2",
     "awesome-typescript-loader": "^3.1.2",
+    "coveralls": "^2.13.0",
     "express": "^4.15.2",
     "jest": "^19.0.2",
     "json-loader": "^0.5.4",

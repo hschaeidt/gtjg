@@ -1,6 +1,7 @@
 # GTJG
 
 [![Build Status](https://travis-ci.org/hschaeidt/gtjg.svg?branch=master)](https://travis-ci.org/hschaeidt/gtjg)
+[![Coverage Status](https://coveralls.io/repos/github/hschaeidt/gtjg/badge.svg?branch=master)](https://coveralls.io/github/hschaeidt/gtjg?branch=master)
 
 ## Getting started
 
@@ -44,4 +45,4 @@ Test execution and coverage reports will be generated in the `coverage/` folder.
 
 #### `yarn serve`
 
-Launches a minimal express webserver on (localhost:3000)[http://localhost:3000]. Used to test service workers.
+Launches a minimal express webserver on [localhost:3000](http://localhost:3000). Used to test service workers.
