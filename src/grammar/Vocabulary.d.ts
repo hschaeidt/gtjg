@@ -1,9 +1,11 @@
-import {PartOfSpeech} from "./PartOfSpeech";
+declare type PartOfSpeech = "noun";
 
-export interface IVocabulary {
+export interface Vocabulary {
   character: string;
   kana: string[];
   meaning: string[];
   partOfSpeech: PartOfSpeech[];
   exception?: boolean;
 }
+
+export default "";

@@ -1,8 +1,10 @@
-import {PartOfSpeech} from "../words/PartOfSpeech";
+import {Vocabulary} from "./Vocabulary";
 
 export default class Noun {
+  private word: Vocabulary;
+
   constructor(word: Vocabulary) {
-    if (!word.partOfSpeech.includes(PartOfSpeech.Noun)) {
+    if (!word.partOfSpeech.includes("noun")) {
       throw new TypeError("The word must be a noun");
     }
 

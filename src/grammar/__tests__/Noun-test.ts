@@ -1,5 +1,5 @@
 import Noun from "../Noun";
-import Vocabulary from "../../words/Vocabulary";
+import Vocabulary from "../Vocabulary";
 import * as availableWords from "../../fixtures/vocabulary.json";
 
 const getValidNoun = (): Noun => {
