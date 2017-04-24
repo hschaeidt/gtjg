@@ -39,11 +39,18 @@
     "moduleFileExtensions": [
       "ts",
       "tsx",
-      "js",
-      "json"
+      "js"
     ],
+    "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
+    "collectCoverage": true,
     "collectCoverageFrom": [
-      "app/**/*.{ts,tsx}"
+      "src/**/*.{ts,tsx}",
+      "!src/**/*.d.ts"
+    ],
+    "coverageReporters": [
+      "html",
+      "json",
+      "lcov"
     ]
   },
   "license": "WTFPL"
