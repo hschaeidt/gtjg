@@ -1,4 +1,3 @@
-import test from "ava";
 import * as availableWords from "../../fixtures/vocabulary.json";
 import Noun from "../Noun";
 
@@ -10,35 +9,32 @@ const getInvalidNoun = (): Noun => {
   return new Noun(availableWords[3]);
 };
 
-// Noun conjugations
-test("initialize a new noun", (t) => {
-  t.notThrows(() => {
-    getValidNoun();
+describe("Noun Conjugations", () => {
+  test("initialize a new noun", () => {
+    expect(getValidNoun).not.toThrow();
   });
-});
 
-test("fail to initialize a noun", (t) => {
-  t.throws(() => {
-    getInvalidNoun();
-  }, TypeError);
-});
+  test("fail to initialize a noun", () => {
+    expect(getInvalidNoun).toThrow(TypeError);
+  });
 
-test("conjugate to the declarative state of being", (t) => {
-  const noun = getValidNoun();
-  t.is(noun.declarative(), "元気だ");
-});
+  test("conjugate to the declarative state of being", () => {
+    const noun = getValidNoun();
+    expect(noun.declarative()).toBe("元気だ");
+  });
 
-test("conjugate to the negative state of being", (t) => {
-  const noun = getValidNoun();
-  t.is(noun.negative(), "元気じゃない");
-});
+  test("conjugate to the negative state of being", () => {
+    const noun = getValidNoun();
+    expect(noun.negative()).toBe("元気じゃない");
+  });
 
-test("conjugate to the past state of being", (t) => {
-  const noun = getValidNoun();
-  t.is(noun.past(), "元気だった");
-});
+  test("conjugate to the past state of being", () => {
+    const noun = getValidNoun();
+    expect(noun.past()).toBe("元気だった");
+  });
 
-test("conjugate to the negative-past state of being", (t) => {
-  const noun = getValidNoun();
-  t.is(noun.negativePast(), "元気じゃなかった");
+  test("conjugate to the negative-past state of being", () => {
+    const noun = getValidNoun();
+    expect(noun.negativePast()).toBe("元気じゃなかった");
+  });
 });

@@ -3,27 +3,26 @@
     "start": "webpack-dev-server --content-base public/ --config ./config/webpack.dev.config.js",
     "build": "webpack -p --config ./config/webpack.prod.config.js",
     "lint": "tslint src/**/*.tsx src/**/*.ts",
-    "test": "webpack --config ./config/webpack.test.config.js && nyc ava",
+    "test": "jest",
     "coverage": "jest --coverage",
     "ci-coverage": "jest --coverage && cat ./coverage/remapped/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "selenium-start": "selenium-standalone install && selenium-standalone start",
     "serve": "node server.js"
   },
   "devDependencies": {
+    "@types/jest": "^19.2.2",
     "@types/selenium-webdriver": "^3.0.3",
-    "ava": "^0.19.1",
     "awesome-typescript-loader": "^3.1.2",
     "coveralls": "^2.13.0",
     "express": "^4.15.2",
-    "glob": "^7.1.1",
+    "jest": "^19.0.2",
     "json-loader": "^0.5.4",
-    "nyc": "^10.3.0",
     "react-test-renderer": "^15.5.4",
     "selenium-standalone": "^6.4.1",
     "selenium-webdriver": "^3.4.0",
     "source-map-loader": "^0.2.1",
     "sw-precache-webpack-plugin": "^0.9.1",
-    "ts-node": "^3.0.2",
+    "ts-jest": "^19.0.14",
     "tslint": "^5.1.0",
     "tslint-react": "^2.6.0",
     "typescript": "^2.2.2",
@@ -39,33 +38,26 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },
-  "nyc": {
-    "check-coverage": true,
-    "lines": 70,
-    "statements": 70,
-    "functions": 70,
-    "branches": 70,
-    "include": [
-      "src/**/*.{ts,tsx}"
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
     ],
-    "exclude": [
-      "src/**/*.{spec,test}.{ts,tsx}"
+    "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/**/*.d.ts"
     ],
-    "reporter": [
-      "lcov",
-      "text-summary"
-    ],
-    "extension": [
-      ".tsx",
-      ".ts",
-      ".js",
-      ".jsx"
-    ],
-    "require": [
-      "ts-node/register"
-    ],
-    "sourceMap": true,
-    "instrument": true
+    "coverageReporters": [
+      "html",
+      "lcov"
+    ]
   },
   "license": "WTFPL"
 }
