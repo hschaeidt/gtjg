@@ -1,7 +1,7 @@
 import * as kanawana from "kanawana";
 import * as React from "react";
 
-export default class ReviewInput extends React.Component<void, void> {
+export default class ReviewInput extends React.Component<{}, void> {
   private input: HTMLInputElement;
 
   public componentDidMount() {
