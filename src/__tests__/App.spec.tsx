@@ -1,12 +1,13 @@
 import * as webdriver from "selenium-webdriver";
 import {WebDriver, WebElement} from "selenium-webdriver";
+import AppPage from "./AppPage";
 
 describe("App is visible", () => {
   let driver: WebDriver;
+  let appPage: AppPage;
 
   beforeEach(async () => {
     driver = await new webdriver.Builder()
-      .withCapabilities(webdriver.Capabilities.chrome())
       .withCapabilities(webdriver.Capabilities.firefox())
       .usingServer("http://localhost:4444/wd/hub")
       .build();
@@ -16,15 +17,9 @@ describe("App is visible", () => {
     await driver.quit();
   });
 
-  test("we are at google", async () => {
-    await driver.navigate().to("http://google.de/");
-    const element: WebElement = await driver.findElement(webdriver.By.className("sbib_b"));
-    expect(await element.getTagName()).toBe("div");
-  });
-
-  test("we are at google once again", async () => {
-    await driver.navigate().to("http://google.de/");
-    const element: WebElement = await driver.findElement(webdriver.By.className("sbib_b"));
-    expect(await element.getTagName()).toBe("div");
+  test("app container is rendered", async () => {
+    await driver.navigate().to("http://localhost:8080/");
+    appPage = new AppPage(driver);
+    expect(await appPage.isDisplayed()).toBeTruthy();
   });
 });
