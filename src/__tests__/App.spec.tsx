@@ -1,5 +1,5 @@
-import * as webdriver from "selenium-webdriver";
-import {WebDriver, WebElement} from "selenium-webdriver";
+import {WebDriver} from "selenium-webdriver";
+import getWebDriver from "../../helpers/WebDriver";
 import AppPage from "./AppPage";
 
 describe("App is visible", () => {
@@ -7,10 +7,7 @@ describe("App is visible", () => {
   let appPage: AppPage;
 
   beforeEach(async () => {
-    driver = await new webdriver.Builder()
-      .withCapabilities(webdriver.Capabilities.firefox())
-      .usingServer("http://localhost:4444/wd/hub")
-      .build();
+    driver = await getWebDriver();
   });
 
   afterEach(async () => {

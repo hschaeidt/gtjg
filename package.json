@@ -2,7 +2,7 @@
   "scripts": {
     "start": "webpack-dev-server --content-base public/ --config ./config/webpack.dev.config.js",
     "build": "webpack -p --config ./config/webpack.prod.config.js",
-    "lint": "tslint src/**/*.tsx src/**/*.ts",
+    "lint": "tslint src/**/*.tsx src/**/*.ts helpers/**/*.ts",
     "test": "jest",
     "coverage": "jest --coverage",
     "ci-coverage": "jest --coverage && cat ./coverage/remapped/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
