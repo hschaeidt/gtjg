@@ -1,6 +1,10 @@
 import * as kanawana from "kanawana";
 import * as React from "react";
 
+export const testId = {
+  root: "ReviewInput",
+};
+
 export default class ReviewInput extends React.Component<{}, void> {
   private input: HTMLInputElement;
 
@@ -14,7 +18,7 @@ export default class ReviewInput extends React.Component<{}, void> {
 
   public render() {
     return (
-      <input type="text" ref={this.setInputRef} />
+      <input data-test-id={testId.root} type="text" ref={this.setInputRef} />
     );
   }
 
