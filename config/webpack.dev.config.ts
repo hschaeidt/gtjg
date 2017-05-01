@@ -2,6 +2,12 @@ import * as merge from "webpack-merge";
 import baseConfig from "./webpack.config";
 
 export default merge({
+  devServer: {
+    overlay: {
+      errors: true,
+      warnings: true,
+    },
+  },
   devtool: "inline-source-map",
   module: {
     rules: [
