@@ -10,6 +10,7 @@
 * [Typescript](#typescript)
 * [Testing Frameworks](#testing-frameworks)
 * [Coverage](#coverage)
+* [Readings](#readings)
 
 
 ## Getting started
@@ -130,3 +131,10 @@ The tests are written in typescript. Jest has a `transform` hook where a script 
 
 See in the [package.json](https://github.com/hschaeidt/gtjg/blob/master/package.json) the `jest` section to lookup
  the current configuration.
+
+## Readings
+
+##### Webpack & Offline (PWA)
+
+* E-Book: [SurviveJS - Webpack](https://survivejs.com/webpack/)
+* Demo Application: [webpack-pwa](https://github.com/webpack/webpack-pwa)
