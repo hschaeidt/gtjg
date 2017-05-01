@@ -7,18 +7,5 @@
   </head>
   <body>
     <div id="app"></div>
-
-    <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-    <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
-    <% } %>
-    <% if (htmlWebpackPlugin.options.serviceWorker) { %>
-      <script type="application/javascript">
-        (function() {
-          if('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('<%= htmlWebpackPlugin.options.serviceWorker %>');
-          }
-        })();
-      </script>
-    <% } %>
   </body>
 </html>

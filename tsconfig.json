@@ -13,6 +13,6 @@
   ],
   "include": [
     "./src/**/*",
-    "./typings_custom/index.d.ts"
+    "./typings_custom/**/*.d.ts"
   ]
 }

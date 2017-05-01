@@ -1,31 +1,18 @@
-const webpack = require('webpack');
 const merge = require('webpack-merge');
-const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
 const baseConfig = require('./webpack.config.js');
 
-const serviceWorker = {
-  filename: 'gtjg-sw.js'
-};
+/**
+ * This configuration relays on webpack being executed with the `-p` (production) option.
+ *
+ * Though this can also be configured manually if necessary, just remember to remove the `-p` flag in the build process.
+ * @see https://webpack.js.org/guides/production-build/#the-manual-way
+ */
 
-module.exports = merge({
+// The merge order makes sure that the OfflinPlugin is loaded last. It is recommended to execute it last, to let it
+// also cache resources generated from other plugin (example: HtmlWebpackPlugin).
+module.exports = merge(baseConfig, {
   plugins: [
-    new HtmlWebpackPlugin({
-      template: 'src/index.ejs',
-      inject: false,
-      serviceWorker: `/${serviceWorker.filename}`,
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production'),
-      },
-    }),
-    new webpack.optimize.UglifyJsPlugin(),
-    new SWPrecacheWebpackPlugin({
-      cacheId: 'gtjg',
-      filename: serviceWorker.filename,
-      stripPrefix: 'public',
-      minify: true
-    })
+    new OfflinePlugin()
   ],
-}, baseConfig);
+});
