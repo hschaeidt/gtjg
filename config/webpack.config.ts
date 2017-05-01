@@ -2,8 +2,21 @@ import * as HtmlWebpackPlugin from "html-webpack-plugin";
 import * as path from "path";
 import * as merge from "webpack-merge";
 
+export interface Path {
+  output: string; // path to webpacks output directory
+  projectRoot: string;
+}
+
+export const Path: Path = {
+  output: path.join(__dirname, "..", "public"),
+  projectRoot: path.join(__dirname, ".."),
+};
+
 export default merge({}, {
-  entry: "./src/index.tsx",
+  context: Path.projectRoot,
+  entry: {
+    app: "./src/index.tsx",
+  },
   module: {
     rules: [
       { loader: "awesome-typescript-loader", test: /\.tsx?$/ },
@@ -11,8 +24,8 @@ export default merge({}, {
     ],
   },
   output: {
-    filename: "app.js",
-    path: path.join(__dirname, "..", "public"),
+    filename: "[name].js",
+    path: Path.output,
   },
   plugins: [
     new HtmlWebpackPlugin({

@@ -8,7 +8,7 @@ export default merge({
       warnings: true,
     },
   },
-  devtool: "inline-source-map",
+  devtool: "source-map",
   module: {
     rules: [
       { loader: "source-map-loader", test: /\.js$/, enforce: "pre" },
