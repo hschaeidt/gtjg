@@ -7,6 +7,7 @@
 ## Contents
 
 * [Getting started](#getting-started)
+* [Typescript](#typescript)
 * [Testing Frameworks](#testing-frameworks)
 * [Coverage](#coverage)
 
@@ -34,7 +35,7 @@ Open [http://localhost:8080](http://localhost:8080) to view in the browser.
 
 Creates a production build - a `app.js` file will be created in the `public/` folder. Production builds come without
  source maps and are minified.<br />
-For more information see `config/webpack.prod.config.js`.
+For more information see `config/webpack.prod.config.ts`.
 
 #### `yarn lint`
 
@@ -60,6 +61,36 @@ Test execution and coverage reports that will be uploaded to coveralls.io.
 Launches a minimal express webserver on [localhost:3000](http://localhost:3000).<br />
 Used to test service workers.
 
+## Typescript
+
+Typescript is a typed superset of JavaScript that compiles to plain JavaScript. The advantages are also, that less
+ runtime errors may occure, because type errors will be checked by the compiler in a first step. Typescript is also the
+ language we use in this project. With high quality type definitions, developed by the community
+ ([DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)) or by the vendors of the packages itself,
+ autocompletion in the IDE becomes a charm again for JavaScript packages.
+ 
+The [Scoped Package](https://docs.npmjs.com/misc/scope) feature from npm makes it a ease to install third party type
+ definitions for a package. For example to install the type definitions for react, it would be enough to run
+ `yarn add @types/react` in order to install the type definitions. This is a good alternative to
+ [typings](https://github.com/typings/typings) (The Typescript Definition Manager).
+ 
+To find typing definitions for a package, the easiest way would be on 
+ [TypeSearch](https://microsoft.github.io/TypeSearch/) or to search directly on [npm](https://www.npmjs.com/) with the
+ `scope:types` filter. For example `scope:types react`.
+ 
+### Webpack & NodeJS
+
+Using typescript with webpack and NodeJS requires following dev dependencies:
+
+* `ts-node`
+* `@types/webpack-*-plugin`
+ 
+### Limitations
+
+While there are a lot of type definitions packages out there, not everything has or will ever have type definitions. To
+ bypass this problem, while still having `noImplicitAny` activated in the `tsconfig.json`, we need to create custom
+ typings. In the `custom_typings` folder in the document root there are missing package declarations from 3rd party
+ packages coming from npm. Declaring the package name with a export any type will be enough to supress compiler errors.
 
 ## Testing Frameworks
 
