@@ -6,13 +6,13 @@
     "module": "commonjs",
     "target": "es5",
     "jsx": "react",
-    "lib":["dom","es2017"]
+    "lib":["dom", "es2015", "es2017"]
   },
   "exclude": [
     "node_modules"
   ],
   "include": [
     "./src/**/*",
-    "./typings_custom/index.d.ts"
+    "./typings_custom/**/*.d.ts"
   ]
 }
