@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./src/App.tsx",
+  entry: "./src/index.tsx",
   output: {
     path: path.join(__dirname, '..', 'public'),
     filename: 'app.js',
@@ -11,8 +11,7 @@ module.exports = {
   },
   module: {
     rules: [
-      { loader: "awesome-typescript-loader", test: /\.tsx?$/ },
-      { loader: 'json-loader', test: /\.json$/ }
+      { loader: "awesome-typescript-loader", test: /\.tsx?$/ }
     ]
   }
 };

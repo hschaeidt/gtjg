@@ -1,8 +1,12 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import ReviewInput from "./components/ReviewInput";
 
-ReactDOM.render(
-  <ReviewInput />,
-  document.getElementById("app"),
+export const testId = {
+  root: "App",
+};
+
+export default () => (
+  <div data-test-id={testId.root}>
+    <ReviewInput />
+  </div>
 );

@@ -1,14 +1,13 @@
-import Noun from "../Noun";
-import Vocabulary from "../Vocabulary";
 import * as availableWords from "../../fixtures/vocabulary.json";
+import Noun from "../Noun";
 
 const getValidNoun = (): Noun => {
   return new Noun(availableWords[0]);
-}
+};
 
 const getInvalidNoun = (): Noun => {
   return new Noun(availableWords[3]);
-}
+};
 
 describe("Noun Conjugations", () => {
   test("initialize a new noun", () => {
