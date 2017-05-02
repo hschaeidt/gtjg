@@ -9,6 +9,7 @@
 * [Getting started](#getting-started)
 * [Typescript](#typescript)
 * [Testing Frameworks](#testing-frameworks)
+* [Jest](#jest)
 * [Coverage](#coverage)
 * [Readings](#readings)
 
@@ -46,13 +47,28 @@ Static code analysis for typescript files. See `/tslint.json` for rule definitio
 
 Runs all tests using [jest-cli](https://facebook.github.io/jest/). All tests located in `__tests__` folders will be
  executed. Also see `package.json` for configuration changes.<br />
+This command executes all unit-tests ending `.test.tsx?`. 
 A watcher during developement can be started by running `yarn test -- --watch`.
 
-#### `yarn coverage`
+#### `yarn test:e2e`
+
+Starts a special helper script `scripts/E2ETestSuite.ts` which actually does the same as.
+
+```
+$ selenium-standalone install
+$ selenium-standalone start
+$ yarn start
+$ jest "(/__tests__/.*spec).(ts|tsx|js)" --forceExit
+```
+
+Args will just be piped to jest. The first argument is the test pattern then followed by options. The test pattern
+ executes the end-to-end test suite with file endings in `.spec.tsx?`.
+
+#### `yarn test:coverage`
 
 Starts the test suite and collects coverage information. The processed coverage report is in `/coverage/remapped`.
 
-#### `yarn ci-coverage`
+#### `yarn test:coverage-ci`
 
 `travis-ci` specific command.<br />
 Test execution and coverage reports that will be uploaded to coveralls.io.
@@ -110,13 +126,68 @@ The following tests are executed in the same test-suite.
 End-to-end tests are suffixed with `.spec.ts`. In order to start the tests the selenium-server and webpack-dev-server
  has to be started.
 
-This can be done with `yarn start`, `yarn selenium-start`, and finally `yarn test`.
+This can be done with `yarn start`, `yarn selenium-start`, and finally `yarn test <testRegex> [options]`.<br />
+It can also be run by a little helper script `yarn test:e2e` which does the above manual steps for you.
 
 ### Unit tests
 
 Unit tests are suffixed with `.test.ts` or `.test.tsx`.
 
 They can be started with `yarn test`.
+
+## Jest
+
+The test framework of choice for this project is jest.
+The configuration part of jest is a little bit awkward and might seem as some magic is happening there, but I will go
+ into details and explain why it works the way it works. A lot of the insights were only found out by testing and
+ analyzing it's behaviour.
+ 
+### Configuration
+
+The basic and common configuration is located in the `package.json` under the `jest` section. Here it is important to
+ notice the following parts:
+ 
+* `"testRegex": "/__tests__/"`
+* `"collectCoverage": true`
+
+The `jest-cli` api says: "CLI options take precedence over values from the Configuration.". This is not always true in
+ my point of vue. For example have a look at the `package.json` in the `scripts` section at this line:
+ `"test": "jest \".*(test).(ts|tsx|js)$\"",`. The first parameter without a options flag represents the option
+ [jest \<regexForTestFiles\>](https://facebook.github.io/jest/docs/cli.html#jest-regexfortestfiles). According to the
+ documentation it should take precedence of the test regex defined in our `package.json`. But this is not true, instead
+ the testRegex is still took into account and the parameter we expected to be the test regex will be passed as
+ [--testPathPattern=\<regex\>](https://facebook.github.io/jest/docs/cli.html#testpathpattern-regex). So it is not a
+ override but rather a additional regex built on top of the `testRegex` specified in the `package.json`.
+
+Imagine following scenario:
+
+```
+"jest": {
+  "testRegex": ".*(test).(ts|tsx)$"
+}
+```
+
+and
+
+```
+"scripts": {
+  "test": "jest \".*(spec).(ts|tsx)$\""
+}
+```
+
+We would expect our test script to execute only tests ending in `.spec.ts` or `.spec.tsx`. But in real not one single
+ test will be executed. Because the second *testRegex* will be checked *additionally* to the first one. So each
+ *testRegex* on it's own will match the correct files, but both combined together will find none.
+ 
+That is why in this solution the base *testRegex* checks only for a `__tests__` folder, whereas the one passed to the
+ jest-cli defines what kind of test files in this folder shall be executed.<br />
+<br />
+Now look at the second part of the jest configuration as described above: `"collectCoverage": true`.
+Here we would expect we could override this coverage report by just passing the option
+ [`--coverage=false`](https://facebook.github.io/jest/docs/cli.html#coverage) to the cli. But in real it is only a
+ truable variable which, for some reason, can't be fed with the option *false*. That is why in it's default
+ configuration it is not set, but instead on the relevant parts of the `package.json` where we actually want to collect
+ a coverage.
 
 ## Coverage
 

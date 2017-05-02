@@ -3,9 +3,10 @@
     "start": "webpack-dev-server --stdin --config ./config/webpack.dev.config.ts",
     "build": "webpack -p --config ./config/webpack.prod.config.ts",
     "lint": "tslint src/**/*.tsx src/**/*.ts helpers/**/*.ts config/**/*.ts",
-    "test": "jest",
-    "coverage": "jest --coverage",
-    "ci-coverage": "jest --coverage && cat ./coverage/remapped/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test": "jest \".*(test).(ts|tsx|js)$\"",
+    "test:e2e" : "ts-node scripts/E2ETestSuite.ts \".*(test|spec).(ts|tsx|js)$\" --forceExit",
+    "test:coverage": "npm run test -- --coverage",
+    "test:coverage-ci": "npm run test -- --coverage && cat ./coverage/remapped/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "selenium-start": "selenium-standalone install && selenium-standalone start",
     "serve": "ts-node server.ts"
   },
@@ -16,6 +17,7 @@
     "@types/jest": "^19.2.2",
     "@types/node": "^7.0.14",
     "@types/selenium-webdriver": "^3.0.3",
+    "@types/webpack-dev-server": "^1.12.6",
     "@types/webpack-merge": "^0.0.4",
     "awesome-typescript-loader": "^3.1.2",
     "clean-webpack-plugin": "^0.1.16",
@@ -51,14 +53,13 @@
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-    "testRegex": "(/__tests__/.*(test|spec)).(ts|tsx|js)$",
+    "testRegex": "/__tests__/",
     "moduleFileExtensions": [
       "ts",
       "tsx",
       "js"
     ],
     "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
-    "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}",
       "!src/index.tsx",

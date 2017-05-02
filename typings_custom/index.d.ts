@@ -11,12 +11,22 @@ declare module "clean-webpack-plugin" {
   export = content;
 }
 
+declare module "jest-cli" {
+  const content: any;
+  export = content;
+}
+
 declare module "kanawana" {
   const content: any;
   export = content;
 }
 
 declare module "offline-plugin" {
+  const content: any;
+  export = content;
+}
+
+declare module "selenium-standalone" {
   const content: any;
   export = content;
 }
