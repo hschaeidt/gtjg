@@ -74,7 +74,7 @@ function startSelenium() {
 
 // start dependencies in the correct order
 async function main() {
-  if (username === null && accessKey === null) {
+  if (username === null || accessKey === null) {
     await installSelenium();
     await startSelenium();
   }

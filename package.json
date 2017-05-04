@@ -4,7 +4,7 @@
     "build": "webpack -p --config ./config/webpack.prod.config.ts",
     "lint": "tslint src/**/*.tsx src/**/*.ts helpers/**/*.ts config/**/*.ts",
     "test": "jest \"/__tests__/.*\\.test\\.(ts|tsx)$\"",
-    "test:e2e": "ts-node scripts/E2ETestSuite.ts --forceExit \"/__tests__/.*\\.spec\\.(ts|tsx)$\"",
+    "test:e2e": "ts-node scripts/E2ETestSuiteRunner.ts --forceExit --setupTestFrameworkScriptFile=scripts/E2ETestSuiteSetup.ts \"/__tests__/.*\\.spec\\.(ts|tsx)$\"",
     "test:coverage": "npm run test -- --coverage",
     "test:coverage-ci": "npm run test -- --coverage && cat ./coverage/remapped/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "selenium-start": "selenium-standalone install && selenium-standalone start",

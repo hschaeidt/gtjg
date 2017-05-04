@@ -52,7 +52,7 @@ A watcher during developement can be started by running `yarn test -- --watch`.
 
 #### `yarn test:e2e`
 
-Starts a special helper script `scripts/E2ETestSuite.ts` which actually does the same as.
+Starts a special helper script `scripts/E2ETestSuiteRunner.ts` which actually does the same as.
 
 ```
 $ selenium-standalone install
