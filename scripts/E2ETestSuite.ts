@@ -4,6 +4,9 @@ import * as Webpack from "webpack";
 import * as DevServer from "webpack-dev-server";
 import webpackDevConfig from "../config/webpack.dev.config";
 
+const username = process.env.SAUCE_USERNAME || null;
+const accessKey = process.env.SAUCE_ACCESS_KEY || null;
+
 /**
  * Small helper executing end-to-end test dependencies in the correct order
  * -> start selenium-standalone
@@ -71,8 +74,11 @@ function startSelenium() {
 
 // start dependencies in the correct order
 async function main() {
-  await installSelenium();
-  await startSelenium();
+  if (username === null && accessKey === null) {
+    await installSelenium();
+    await startSelenium();
+  }
+
   await startDevServer();
 }
 

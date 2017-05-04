@@ -6,6 +6,8 @@ describe("App is visible", () => {
   let driver: WebDriver;
   let appPage: AppPage;
 
+  jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
+
   beforeEach(async () => {
     driver = await getWebDriver();
   });
