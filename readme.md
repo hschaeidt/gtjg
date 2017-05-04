@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/hschaeidt/gtjg.svg?branch=master)](https://travis-ci.org/hschaeidt/gtjg)
 [![Coverage Status](https://coveralls.io/repos/github/hschaeidt/gtjg/badge.svg?branch=master)](https://coveralls.io/github/hschaeidt/gtjg?branch=master)
+[![Build Status](https://saucelabs.com/buildstatus/hschaeidt)](https://saucelabs.com/beta/builds/1a4ea72e54c64df180cce68d660aaa5b)
 
 
 ## Contents
@@ -52,7 +53,7 @@ A watcher during developement can be started by running `yarn test -- --watch`.
 
 #### `yarn test:e2e`
 
-Starts a special helper script `scripts/E2ETestSuite.ts` which actually does the same as.
+Starts a special helper script `scripts/E2ETestSuiteRunner.ts` which actually does the same as.
 
 ```
 $ selenium-standalone install
@@ -75,7 +76,7 @@ Test execution and coverage reports that will be uploaded to coveralls.io.
 
 #### `yarn serve`
 
-Launches a minimal express webserver on [localhost:3000](http://localhost:3000).<br />
+Launches a minimal express webserver on [localhost:8081](http://localhost:8081).<br />
 Used to test service workers.
 
 ## Typescript

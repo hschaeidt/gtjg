@@ -4,6 +4,9 @@ node_js:
 script:
   - yarn lint
   - yarn test:coverage-ci
+  - yarn serve:background
+  - yarn build
+  - yarn test:e2e-no-env
 
 cache: yarn
 env:
@@ -14,3 +17,4 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
+  sauce_connect: true

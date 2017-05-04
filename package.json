@@ -3,12 +3,14 @@
     "start": "webpack-dev-server --stdin --config ./config/webpack.dev.config.ts",
     "build": "webpack -p --config ./config/webpack.prod.config.ts",
     "lint": "tslint src/**/*.tsx src/**/*.ts helpers/**/*.ts config/**/*.ts",
-    "test": "jest \".*(test).(ts|tsx|js)$\"",
-    "test:e2e" : "ts-node scripts/E2ETestSuite.ts \".*(test|spec).(ts|tsx|js)$\" --forceExit",
+    "test": "jest \"/__tests__/.*\\.test\\.(ts|tsx)$\"",
+    "test:e2e": "ts-node scripts/E2ETestSuiteRunner.ts --forceExit --setupTestFrameworkScriptFile=scripts/E2ETestSuiteSetup.ts \"/__tests__/.*\\.spec\\.(ts|tsx)$\"",
+    "test:e2e-no-env": "jest --setupTestFrameworkScriptFile=scripts/E2ETestSuiteSetup.ts \"/__tests__/.*\\.spec\\.(ts|tsx)$\"",
     "test:coverage": "npm run test -- --coverage",
     "test:coverage-ci": "npm run test -- --coverage && cat ./coverage/remapped/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "selenium-start": "selenium-standalone install && selenium-standalone start",
-    "serve": "ts-node server.ts"
+    "serve": "ts-node server.ts",
+    "serve:background": "yarn serve > /dev/null 2>&1 &"
   },
   "devDependencies": {
     "@types/enzyme": "^2.7.9",
