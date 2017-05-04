@@ -9,8 +9,21 @@ if (username !== null && accessKey !== null) {
 }
 
 export default function getWebDriver(): ThenableWebDriver {
-  return new Builder()
-    .withCapabilities(Capabilities.firefox())
+  const builder = new Builder();
+
+  if (username !== null && accessKey !== null) {
+    builder.withCapabilities(
+      Capabilities.firefox()
+        .set("tunnel-identifier", process.env.TRAVIS_JOB_NUMBER)
+        .set("build", process.env.TRAVIS_BUILD_NUMBER)
+        .set("username", username)
+        .set("accessKey", accessKey),
+    );
+  } else {
+    builder.withCapabilities(Capabilities.firefox());
+  }
+
+  return builder
     .usingServer(serverUrl)
     .build();
 }

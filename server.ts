@@ -5,7 +5,7 @@ import * as path from "path";
 
 let app;
 let server;
-const host = process.env.HOST || "127.0.0.1";
+const host = process.env.HOST || "localhost";
 const port = process.env.PORT || 8081;
 const root = path.resolve(__dirname);
 

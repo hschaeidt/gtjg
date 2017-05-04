@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/hschaeidt/gtjg.svg?branch=master)](https://travis-ci.org/hschaeidt/gtjg)
 [![Coverage Status](https://coveralls.io/repos/github/hschaeidt/gtjg/badge.svg?branch=master)](https://coveralls.io/github/hschaeidt/gtjg?branch=master)
+[![Build Status](https://saucelabs.com/buildstatus/hschaeidt)](https://saucelabs.com/beta/builds/1a4ea72e54c64df180cce68d660aaa5b)
 
 
 ## Contents

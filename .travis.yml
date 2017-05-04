@@ -6,7 +6,7 @@ script:
   - yarn test:coverage-ci
   - yarn serve:background
   - yarn build
-  - yarn test:e2e-manual
+  - yarn test:e2e-no-env
 
 cache: yarn
 env:
