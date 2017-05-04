@@ -23,8 +23,9 @@ const webpack = Webpack(webpackDevConfig, (err: Error, stats: Webpack.Stats) => 
 
 // Webpack Dev Server intsance using the webpack compiler and some really basic config
 const devServer = new DevServer(webpack, {
-  contentBase: "public",
-  publicPath: "",
+  noInfo: false,
+  publicPath: "/",
+  quiet: false,
 });
 
 // Small wrapper around webpack-dev-server start returning a Promise
@@ -32,8 +33,12 @@ const devServer = new DevServer(webpack, {
 // @see main()
 function startDevServer(): Promise<{}> {
   return new Promise((resolve, reject) => {
-    devServer.listen(8080, () => {
-      resolve();
+    devServer.listen(8081, "localhost", () => {
+      console.info("---> webpack dev server started on port 8081");
+      console.info("---> waiting 5 seconds for the dev server to compile");
+      setTimeout(() => {
+        resolve();
+      }, 5000);
     });
   });
 }

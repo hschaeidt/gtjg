@@ -4,7 +4,9 @@ node_js:
 script:
   - yarn lint
   - yarn test:coverage-ci
-  - SAUCE_USERNAME=$SAUCE_USERNAME SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY yarn test:e2e
+  - yarn serve:background
+  - yarn build
+  - yarn test:e2e-manual
 
 cache: yarn
 env:

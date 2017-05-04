@@ -75,7 +75,7 @@ Test execution and coverage reports that will be uploaded to coveralls.io.
 
 #### `yarn serve`
 
-Launches a minimal express webserver on [localhost:3000](http://localhost:3000).<br />
+Launches a minimal express webserver on [localhost:8081](http://localhost:8081).<br />
 Used to test service workers.
 
 ## Typescript

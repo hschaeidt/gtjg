@@ -6,7 +6,7 @@ import * as path from "path";
 let app;
 let server;
 const host = process.env.HOST || "127.0.0.1";
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8081;
 const root = path.resolve(__dirname);
 
 app = express();

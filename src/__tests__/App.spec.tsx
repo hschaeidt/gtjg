@@ -15,7 +15,7 @@ describe("App is visible", () => {
   });
 
   test("app container is rendered", async () => {
-    await driver.navigate().to("http://localhost:8080/");
+    await driver.navigate().to("http://localhost:8081/");
     appPage = new AppPage(driver);
     expect(await appPage.isDisplayed()).toBeTruthy();
   });
