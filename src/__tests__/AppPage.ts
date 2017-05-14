@@ -1,21 +1,22 @@
-import {By, WebDriver, WebElementPromise} from "selenium-webdriver";
 import {testId} from "../App";
 
 const byTestId = (testId: string) => {
-  return By.css(`[data-test-id='${testId}']`);
+  return `[data-test-id='${testId}']`;
 };
 
-export default class AppPage {
-  public root: WebElementPromise;
-  private driver: WebDriver;
+class AppPage {
+    get root() {
+      return browser.element(byTestId(testId.root));
+    }
 
-  constructor(driver: WebDriver) {
-    this.driver = driver;
-    this.root = this.driver.findElement(byTestId(testId.root));
-  }
+    public open() {
+      browser.url("/");
+    }
 
-  public async isDisplayed() {
-    const root = await this.root;
-    return root.isDisplayed();
-  }
+    public isDisplayed() {
+      const root = this.root;
+      return root.isVisible();
+    }
 }
+
+export default new AppPage();
